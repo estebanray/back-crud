@@ -1,0 +1,26 @@
+GET http://localhost:8000/granjas
+
+###
+ POST http://localhost:8000/granjas
+ Content-Type: application/json
+
+ {
+     "nombre": "pruebaPOST",
+     "precio": 2.85 ,
+     "categoria_id": 1
+ }
+
+###
+ PUT http://localhost:8000/granjas/30
+ Content-Type: application/json
+
+ {
+     "nombre": "pruebaPUT",
+     "precio": 2.85 ,
+     "categoria_id": 1
+ }
+ 
+
+###
+ DELETE http://localhost:8000/granjas/29
+
