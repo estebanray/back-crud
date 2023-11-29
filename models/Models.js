@@ -1,4 +1,3 @@
-// importar la conexin a la db
 import db from "../database/db.js";
 import { DataTypes } from "sequelize";
 
@@ -8,4 +7,18 @@ const GranjaModel = db.define('granjas', {
     categoria_id: {type: DataTypes.STRING},
 })
 
-export default GranjaModel;
+
+//prueba para traer la tabla categoria
+const CategoriaModel = db.define('categorias', {
+    categoria: { type: DataTypes.STRING }
+});
+
+//esto sirve para asociar ambas tablas
+GranjaModel.belongsTo(CategoriaModel, { foreignKey: 'categoria_id' });
+CategoriaModel.hasMany(GranjaModel, { foreignKey: 'categoria_id' });
+
+
+export default {
+    GranjaModel,
+    CategoriaModel
+};

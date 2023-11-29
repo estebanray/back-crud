@@ -1,16 +1,19 @@
-import GranjaModel from "../models/Models.js";
+import Models from '../models/Models.js';
 
+const { GranjaModel, CategoriaModel } = Models;
 
 //Metodos:
 
 export const getAllGranja = async (req, res) => {
     try {
-        const granjas = await GranjaModel.findAll()
-        res.json(granjas)
+        const granjasConCategorias = await GranjaModel.findAll({
+            include: [{ model: CategoriaModel, attributes: ['categoria'] }]
+        });
+        res.json(granjasConCategorias);
     } catch (error) {
-        res.json ( {message: error.message} )
+        res.json({ message: error.message });
     }
-} 
+}
 
 export const getGranja = async (req, res) => {
     try {
