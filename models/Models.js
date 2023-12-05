@@ -13,7 +13,7 @@ const CategoriaModel = db.define('categorias', {
     categoria: { type: DataTypes.STRING }
 });
 
-//esto sirve para asociar ambas tablas
+//asociar ambas tablas
 GranjaModel.belongsTo(CategoriaModel, { foreignKey: 'categoria_id' });
 CategoriaModel.hasMany(GranjaModel, { foreignKey: 'categoria_id' });
 
